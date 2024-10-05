@@ -1,0 +1,8 @@
+torch
+transformers
+peft
+fastapi
+uvicorn
+google-cloud-speech
+google-cloud-texttospeech
+bitsandbytes
