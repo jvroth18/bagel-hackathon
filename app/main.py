@@ -15,7 +15,7 @@ app = FastAPI()
 async def startup_event():
     print("Loading model... This may take a moment.")
     adapter_path = "finetuned-model"  # Path inside the Docker image where the model is stored
-    base_model_name = "bagelnet/Llama-3-8B"
+    base_model_name = "bagelnet/Llama-3-8B"  # Base path for the Llama-3-8B model
 
     quantization_config = BitsAndBytesConfig(
         load_in_8bit=False,
@@ -61,7 +61,6 @@ def generate_response(conversation_history, max_length=200):
     # prompt = f"You are a helpful AI assistant. Provide a concise and relevant answer to the user's question. Only reply to the question\n\n{conversation_history}"
     
     input_ids = tokenizer.encode(prompt, return_tensors="pt").to(model.device)
-
 
     with torch.no_grad():
         output = model.generate(
